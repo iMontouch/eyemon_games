@@ -27,7 +27,6 @@ CMD ["/start.sh"]
 
 ENV MOTD "Mittelerde MC Eternal"
 ENV LEVEL world
-ENV JVM_OPTS "-Xms2048m -Xmx2048m"
 
 LABEL traefik.enable true
 LABEL traefik.frontend.rule Host:eternal.eyemon.de,
