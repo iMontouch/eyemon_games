@@ -7,7 +7,7 @@ RUN addgroup --gid 1234 minecraft
 RUN adduser --disabled-password --home=/data --uid 1234 --gid 1234 --gecos "minecraft user" minecraft
 
 RUN mkdir /tmp/feed-the-beast && cd /tmp/feed-the-beast && \
- wget -c https://misc.imontou.ch/Eternal+(ServerPack1.3.5b).zip -O eternal_server.zip && \
+ wget -c https://misc.imontou.ch/Eternal_ServerPack_1.3.5b.zip -O eternal_server.zip && \
  unzip eternal_server.zip && \
  rm eternal_server.zip && \
  chown -R minecraft /tmp/feed-the-beast
