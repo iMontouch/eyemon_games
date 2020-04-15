@@ -20,6 +20,6 @@ services:
     environment:
       BUNGEE_JAR_REVISION: "1"
     ports:
-      - 25565:25577
+      - 25570:25577
     volumes:
       - /opt/minecraft/bungeestack/bungeecord/config.yml:/server/config.yml
