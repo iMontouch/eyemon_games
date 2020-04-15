@@ -11,4 +11,7 @@ Based on: "/opt/minecraft/bungeestack"
 
 ### Plugins
 * LuckPerms
-* --> RedisBungee for UUID Lookups?
+
+### Security
+#### Firewall
+[Firewall Guide spigotmc.org](https://www.spigotmc.org/wiki/firewall-guide/)
