@@ -35,7 +35,7 @@ services:
     ports:
       - 25570:25577
     volumes:
-      - /opt/minecraft/bungeestack/bungeecord/config.yml:/server/config.yml
+      - /opt/minecraft/bungeestack/bungeecord/server:/server
     restart: always
   db:
     image: mariadb
