@@ -9,7 +9,7 @@
 ### File Locations
 Based on: "/opt/minecraft/bungeestack"
 
-### Plugins
+### General Plugins
 #### LuckPerms
 Installed accross all servers. Bungeecord has its own version. To grant access to commands first time, use
 
