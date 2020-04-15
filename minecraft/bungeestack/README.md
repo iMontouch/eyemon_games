@@ -15,6 +15,10 @@ Installed accross all servers. Bungeecord has its own version. To grant access t
 
 `docker exec HUB_INSTANCE rcon-cli lp user USER permission set luckperms.* true`
 
+Before changes made to the db are available on servers, they may need a simple 
+
+`/lp sync`
+
 
 
 ### Security
