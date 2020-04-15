@@ -8,7 +8,7 @@ services:
       ONLINE_MODE: "FALSE"
       TYPE: "PAPER"
       VERSION: 1.15.2
-      MEMORY: "1G"
+      MEMORY: "4G"
       LEVEL_TYPE: "FLAT"
       OPS: "iMontouch,SwaggyB_"
     command: --noconsole
