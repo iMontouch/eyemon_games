@@ -10,7 +10,12 @@
 Based on: "/opt/minecraft/bungeestack"
 
 ### Plugins
-* LuckPerms
+#### LuckPerms
+Installed accross all servers. Bungeecord has its own version. To grant access to commands first time, use
+
+`docker exec HUB_INSTANCE rcon-cli lp user USER permission set luckperms.* true`
+
+
 
 ### Security
 #### Firewall
