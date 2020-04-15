@@ -4,6 +4,9 @@
 * Hub
 * Vanillaesqe Survival
 * Factions
+* MariaDB
 
 ### File Locations
 Based on: "/opt/minecraft/bungeestack"
+
+### Plugins
