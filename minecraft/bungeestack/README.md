@@ -14,6 +14,8 @@ Based on: "/opt/minecraft/bungeestack"
 [DeluxeHub3 on spigotmc.org](https://www.spigotmc.org/resources/deluxehub-3-professional-hub-management-1-8-1-15.49425/)
 
 ### General Plugins
+#### Spartan | Advanced Anti Cheat | Hack Blocker
+[Spartan on spigotmc.org](https://www.spigotmc.org/resources/spartan-advanced-anti-cheat-hack-blocker.25638/)
 #### LuckPerms
 Installed accross all servers. Bungeecord has its own version. To grant access to commands first time, use
 
