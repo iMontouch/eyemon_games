@@ -10,3 +10,5 @@
 Based on: "/opt/minecraft/bungeestack"
 
 ### Plugins
+* LuckPerms
+* --> RedisBungee for UUID Lookups?
