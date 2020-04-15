@@ -34,3 +34,13 @@ services:
       - 25570:25577
     volumes:
       - /opt/minecraft/bungeestack/bungeecord/config.yml:/server/config.yml
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: changeme
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
