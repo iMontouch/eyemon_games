@@ -24,3 +24,6 @@ Before changes made to the db are available on servers, they may need a simple
 ### Security
 #### Firewall
 [Firewall Guide spigotmc.org](https://www.spigotmc.org/wiki/firewall-guide/)
+
+### Backup
+
