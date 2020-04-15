@@ -33,7 +33,7 @@ services:
     environment:
       BUNGEE_JAR_REVISION: "1"
     ports:
-      - 25570:25577
+      - 25565:25577
     volumes:
       - /opt/minecraft/bungeestack/bungeecord/server:/server
     restart: always
