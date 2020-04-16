@@ -10,7 +10,6 @@ services:
       VERSION: 1.15.2
       MEMORY: "5G"
       LEVEL_TYPE: "FLAT"
-      JVM_DD_OPTS: 'user.timezone="Europe/Berlin"'
     command: --noconsole
     volumes:
       - /opt/minecraft/bungeestack/hub/data:/data
@@ -23,7 +22,6 @@ services:
       TYPE: "PAPER"
       VERSION: 1.15.2
       MEMORY: "2G"
-      JVM_DD_OPTS: 'user.timezone="Europe/Berlin"'
     command: --noconsole
     volumes:
       - /opt/minecraft/bungeestack/vanilla/data:/data
@@ -36,7 +34,6 @@ services:
       TYPE: "PAPER"
       VERSION: 1.15.2
       MEMORY: "2G"
-      JVM_DD_OPTS: 'user.timezone="Europe/Berlin"'
     command: --noconsole
     volumes:
       - /opt/minecraft/bungeestack/factions/data:/data
@@ -45,7 +42,6 @@ services:
     image: itzg/bungeecord
     environment:
       BUNGEE_JAR_REVISION: "1"
-      JVM_DD_OPTS: 'user.timezone="Europe/Berlin"'
     ports:
       - 25565:25577
     volumes:
