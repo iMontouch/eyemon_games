@@ -11,7 +11,7 @@ Based on: "/opt/minecraft/bungeestack"
 
 ### Hub Plugins
 #### DeluxeHub 3 - Professional Hub Management
-[DeluxeHub3 on spigotmc.org](https://www.spigotmc.org/resources/deluxehub-3-professional-hub-management-1-8-1-15.49425/)
+[HubBasics on spigotmc.org](https://www.spigotmc.org/resources/hubbasics.2654/)
 
 ### General Plugins
 #### Chat
@@ -27,11 +27,12 @@ Before changes made to the db are available on servers, they may need a simple
 
 `/lp sync`
 
-
+#### ExploitFixer
+[ExploitFixer on spigotmc.org](https://www.spigotmc.org/resources/2ls-exploitfixer-professional-server-antiexploit.62842/)
 
 ### Security
 #### Firewall
 [Firewall Guide spigotmc.org](https://www.spigotmc.org/wiki/firewall-guide/)
 
-### Backup
+#### Backup
 
