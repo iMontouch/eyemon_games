@@ -26,6 +26,18 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/vanilla/data:/data
     restart: always
+  factions:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"
+      TYPE: "PAPER"
+      VERSION: 1.15.2
+      MEMORY: "2G"      
+    command: --noconsole
+    volumes:
+      - /opt/minecraft/bungeestack/factions/data:/data
+    restart: always
   bungeecord:
     image: itzg/bungeecord
     environment:
