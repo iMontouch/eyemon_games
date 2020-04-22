@@ -23,6 +23,7 @@ services:
       VERSION: 1.15.2
       MEMORY: "1G"
       LEVEL_TYPE: "FLAT"
+      MODE: "CREATIVE"
     command: --noconsole
     volumes:
       - /opt/minecraft/bungeestack/hub/data:/data
