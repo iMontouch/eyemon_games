@@ -14,6 +14,19 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/hub/data:/data
     restart: always
+  creative:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"
+      TYPE: "PAPER"
+      VERSION: 1.15.2
+      MEMORY: "1G"
+      LEVEL_TYPE: "FLAT"
+    command: --noconsole
+    volumes:
+      - /opt/minecraft/bungeestack/hub/data:/data
+    restart: always
   vanilla:
     image: itzg/minecraft-server
     environment:
@@ -21,7 +34,7 @@ services:
       ONLINE_MODE: "FALSE"
       TYPE: "PAPER"
       VERSION: 1.15.2
-      MEMORY: "2G"
+      MEMORY: "4G"
     command: --noconsole
     volumes:
       - /opt/minecraft/bungeestack/vanilla/data:/data
