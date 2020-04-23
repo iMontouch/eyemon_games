@@ -40,6 +40,8 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/vanilla/data:/data
     restart: always
+    ports:
+      - 8123:8123
   factions:
     image: itzg/minecraft-server
     environment:
