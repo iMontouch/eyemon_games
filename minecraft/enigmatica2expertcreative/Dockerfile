@@ -24,7 +24,9 @@ EXPOSE 25565
 
 CMD ["/start.sh"]
 
-ENV MOTD "Mittelerde MC Enigmatica 2 Expert"
+ENV LEVEL-TYPE FLAT
+ENV GAMEMODE 1
+ENV MOTD "Mittelerde MC Enigmatica 2 Expert Creative"
 ENV LEVEL world
 
 LABEL traefik.enable true
