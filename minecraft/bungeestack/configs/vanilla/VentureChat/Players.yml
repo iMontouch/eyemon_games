@@ -1,0 +1,91 @@
+players:
+  e6bdb6b9-b67c-43dc-902f-cc4e15682f46:
+    name: iMontouch
+    current: Network
+    ignores: ''
+    listen: Trade,Help,Donator,Staff,Network,Local,Admin,Global
+    mutes: ''
+    blockedcommands: ''
+    host: false
+    party: ''
+    filter: true
+    notifications: true
+    nickname: iMontouch
+    date: 2020/Apr/16 18:33:51
+    spy: false
+    commandspy: false
+    rangedspy: false
+    messagetoggle: true
+    bungeetoggle: true
+  3ad65321-77da-4386-a5dd-f50e5edea750:
+    name: SwaggyB_
+    current: Network
+    ignores: ''
+    listen: Trade,Help,Network,Local,Global
+    mutes: ''
+    blockedcommands: ''
+    host: false
+    party: ''
+    filter: true
+    notifications: true
+    nickname: SwaggyB_
+    date: 2020/Apr/16 17:47:40
+    spy: false
+    commandspy: false
+    rangedspy: false
+    messagetoggle: true
+    bungeetoggle: true
+  dce47425-879b-4239-8f53-75b4d8e42ec4:
+    name: kappe96
+    current: Global
+    ignores: ''
+    listen: Trade,Help,Network,Local,Global
+    mutes: ''
+    blockedcommands: ''
+    host: false
+    party: ''
+    filter: true
+    notifications: true
+    nickname: kappe96
+    date: 2020/Apr/16 17:39:00
+    spy: false
+    commandspy: false
+    rangedspy: false
+    messagetoggle: true
+    bungeetoggle: true
+  c0957282-e9c1-4956-8822-eccb02952141:
+    name: J03ytekk
+    current: Global
+    ignores: ''
+    listen: Trade,Help,Network,Local,Global
+    mutes: ''
+    blockedcommands: ''
+    host: false
+    party: ''
+    filter: true
+    notifications: true
+    nickname: J03ytekk
+    spy: false
+    commandspy: false
+    rangedspy: false
+    messagetoggle: true
+    bungeetoggle: true
+    date: 2020/Apr/16 20:10:06
+  4597cc84-5e2a-4b04-ad17-ca99808d81cb:
+    name: RUSHBBB
+    current: Global
+    ignores: ''
+    listen: Trade,Help,Network,Local,Global
+    mutes: ''
+    blockedcommands: ''
+    host: false
+    party: ''
+    filter: true
+    notifications: true
+    nickname: RUSHBBB
+    spy: false
+    commandspy: false
+    rangedspy: false
+    messagetoggle: true
+    bungeetoggle: true
+    date: 2020/Apr/16 20:10:06
