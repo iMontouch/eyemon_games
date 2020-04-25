@@ -30,4 +30,4 @@ ENV MOTD "Mittelerde MC Enigmatica 2 Expert Creative"
 ENV LEVEL world
 
 LABEL traefik.enable true
-LABEL traefik.frontend.rule Host:e2.eyemon.de,
+LABEL traefik.frontend.rule Host:e2c.eyemon.de,

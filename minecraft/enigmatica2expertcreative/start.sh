@@ -7,9 +7,10 @@ cd /data
 cp -rf /tmp/feed-the-beast/* .
 echo "eula=true" > eula.txt
 
-if [[ -n "$LEVEL-TYPE" ]]; then
-    sed -i "/level-type\s*=/ c level-type=$LEVEL-TYPE" /data/server.properties
+if [[ ! -e server.properties ]]; then
+    cp /tmp/server.properties .
 fi
+
 if [[ -n "$GAMEMODE" ]]; then
     sed -i "/gamemode\s*=/ c gamemode=$GAMEMODE" /data/server.properties
 fi
