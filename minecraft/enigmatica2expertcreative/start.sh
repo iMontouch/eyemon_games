@@ -7,9 +7,7 @@ cd /data
 cp -rf /tmp/feed-the-beast/* .
 echo "eula=true" > eula.txt
 
-if [[ ! -e server.properties ]]; then
-    cp /tmp/server.properties .
-fi
+cp /tmp/server.properties .
 
 if [[ -n "$GAMEMODE" ]]; then
     sed -i "/gamemode\s*=/ c gamemode=$GAMEMODE" /data/server.properties
