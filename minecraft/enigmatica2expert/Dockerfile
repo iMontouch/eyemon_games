@@ -18,15 +18,14 @@ RUN chmod +x /start.sh
 USER minecraft
 
 VOLUME /data
-ADD server.properties /tmp/server.properties
 WORKDIR /data
 
 EXPOSE 25565
 
 CMD ["/start.sh"]
 
-ENV MOTD "Mittelerde MC Eternal"
+ENV MOTD "Mittelerde MC Enigmatica 2 Expert"
 ENV LEVEL world
 
 LABEL traefik.enable true
-LABEL traefik.frontend.rule Host:eternal.eyemon.de,
+LABEL traefik.frontend.rule Host:e2.eyemon.de,
