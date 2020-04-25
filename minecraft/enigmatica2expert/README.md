@@ -36,7 +36,8 @@ With that you can easily view the logs, stop, or re-start the container:
 
 In order to persist the Minecraft data, which you *probably want to do for a real server setup*, use the `-v` argument to map a directory of the host to ``/data``:
 
-    docker run -d -v /path/on/host:/data -p 25565:25565 trueosiris/minecraft-skyfactory4
+    docker run -d -v /opt/minecraft/enigmatica2expert/data:/data -p 25577:25565 --name enigmatica2expert enigmatica2expert:1.0
+	docker run -d -v /opt/minecraft/enigmatica2expertcreative/data:/data -p 25578:25565 --name enigmatica2expertcreative enigmatica2expert_creative:1.0
 
 When attached in this way you can stop the server, edit the configuration under your attached ``/path/on/host`` and start the server again with `docker start CONTAINERID` to pick up the new configuration.
 
