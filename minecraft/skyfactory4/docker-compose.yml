@@ -7,6 +7,7 @@ services:
             - '/opt/minecraft/sf4/ops.json:/minecraft/ops.json'
             - '/opt/minecraft/sf4/server.properties:/minecraft/server.properties'
             - '/opt/minecraft/sf4/whitelist.json:/minecraft/whitelist.json'
+            - '/opt/minecraft/sf4/settings.sh:/minecraft/settings.sh'
         restart: unless-stopped
         ports:
             - '25569:25565'
