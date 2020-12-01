@@ -4,9 +4,9 @@ services:
         container_name: sf4
         volumes:
             - '/opt/minecraft/sf4/world:/minecraft/world'
-            - '/opt/minecraft/ops.json:/minecraft/ops.json'
-            - '/opt/minecraft/server.properties:/minecraft/server.properties'
-            - '/opt/minecraft/whitelist.json:/minecraft/whitelist.json'
+            - '/opt/minecraft/sf4/ops.json:/minecraft/ops.json'
+            - '/opt/minecraft/sf4/server.properties:/minecraft/server.properties'
+            - '/opt/minecraft/sf4/whitelist.json:/minecraft/whitelist.json'
         restart: unless-stopped
         ports:
             - '25569:25565'
