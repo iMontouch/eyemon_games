@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+    skyfactory4:
+        container_name: sf4
+        volumes:
+            - '/home/core/sf4/world:/minecraft/world'
+            - '/home/core/sf4/ops.json:/minecraft/ops.json'
+            - '/home/core/sf4/server.properties:/minecraft/server.properties'
+            - '/home/core/sf4/whitelist.json:/minecraft/whitelist.json'
+        restart: unless-stopped
+        ports:
+            - '25565:25565'
+        image: cochief/skyfactory4
