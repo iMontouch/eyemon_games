@@ -9,5 +9,8 @@ services:
             - '/opt/minecraft/whitelist.json:/minecraft/whitelist.json'
         restart: unless-stopped
         ports:
-            - '25565:25565'
+            - '25569:25565'
         image: cochief/skyfactory4
+        labels:
+           traefik.frontend.rule: "Host:sf4.eyemon.de,"
+           traefik.enable: true
