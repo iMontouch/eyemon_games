@@ -43,7 +43,7 @@ In order to persist the Minecraft data, which you *probably want to do for a rea
 When attached in this way you can stop the server, edit the configuration under your attached ``/path/on/host`` and start the server again with `docker start CONTAINERID` to pick up the new configuration.
 
 ## Server Console
-docker exec -i mc rcon-cli
+docker exec -i enigmatica2normal /rcon-cli --port 25575 --password 1337 say hello
 
 ## Server configuration
 

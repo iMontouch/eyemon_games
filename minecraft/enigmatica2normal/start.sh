@@ -11,6 +11,8 @@ else
     cp -rf /tmp/feed-the-beast/* .
 	echo "eula=true" > /data/eula.txt
 	sed -i 's/enable-rcon=false/enable-rcon=true/g' /data/server.properties
+	echo "rcon.port=25575" >> /data/server.properties
+	echo "rcon.password=1337" >> /data/server.properties
 fi
 
 if [[ -n "$MOTD" ]]; then
