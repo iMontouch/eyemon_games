@@ -9,7 +9,7 @@ RUN adduser --disabled-password --home=/data --uid 1234 --gid 1234 --gecos "mine
 VOLUME /data
 WORKDIR /data
 
-RUN mkdir /data && cd /data && \
+RUN cd /data && \
  wget -c https://misc.imontou.ch/Enigmatica2Server-1.77.zip -O enigmatica_server.zip && \
  unzip enigmatica_server.zip && \
  rm enigmatica_server.zip && \
