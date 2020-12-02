@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+    enigmatica2normal:
+        container_name: enigmatica2normal
+        volumes:
+            - '/opt/minecraft/e2n/world:/data/world'
+        restart: unless-stopped
+        ports:
+            - '25570:25565'
+        image: enigmatica2normal
+        labels:
+           traefik.frontend.rule: "Host:e2n.eyemon.de,"
+           traefik.enable: true
