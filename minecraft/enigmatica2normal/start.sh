@@ -4,7 +4,7 @@ set -e
 
 cd /data
 
-cp -rf /data/config /tmp/feed-the-beast/config
+#cp -rf /data/config /tmp/feed-the-beast/config
 cp -rf /tmp/feed-the-beast/* .
 
 echo "eula=true" > /data/eula.txt
