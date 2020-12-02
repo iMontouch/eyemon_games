@@ -10,8 +10,7 @@ RUN mkdir /tmp/feed-the-beast && cd /tmp/feed-the-beast && \
  wget -c https://misc.imontou.ch/Enigmatica2Server-1.77.zip -O enigmatica_server.zip && \
  unzip enigmatica_server.zip && \
  rm enigmatica_server.zip && \
- chown -R minecraft /tmp/feed-the-beast && \
- chown -R minecraft /data
+ chown -R minecraft /tmp/feed-the-beast
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
@@ -25,7 +24,7 @@ EXPOSE 25565
 
 CMD ["/start.sh"]
 
-ENV MOTD "Mittelerde MC Enigmatica 2 Expert"
+ENV MOTD "\u00a7aMittelerde \u00a7rEnigmatica2 Normal\n\u00a7l\u00a7o> Hey now, you're an all star <"
 ENV LEVEL world
 
 LABEL traefik.enable true
