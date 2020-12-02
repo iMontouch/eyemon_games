@@ -6,11 +6,9 @@ RUN apt-get install -y wget unzip
 RUN addgroup --gid 1234 minecraft
 RUN adduser --disabled-password --home=/data --uid 1234 --gid 1234 --gecos "minecraft user" minecraft
 
-VOLUME /data
 WORKDIR /data
 
-RUN cd /data && \
- wget -c https://misc.imontou.ch/Enigmatica2Server-1.77.zip -O enigmatica_server.zip && \
+RUN wget -c https://misc.imontou.ch/Enigmatica2Server-1.77.zip -O enigmatica_server.zip && \
  unzip enigmatica_server.zip && \
  rm enigmatica_server.zip && \
  chown -R minecraft /data
@@ -21,6 +19,8 @@ RUN chmod +x /start.sh
 USER minecraft
 
 EXPOSE 25565
+
+VOLUME /data
 
 CMD ["/start.sh"]
 

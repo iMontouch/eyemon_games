@@ -6,7 +6,7 @@ cd /data
 
 #cp -rf /data/config /tmp/feed-the-beast/config
 #cp -rf /tmp/feed-the-beast/* .
-echo "eula=true" > eula.txt
+echo "eula=true" > /data/eula.txt
 
 if [[ -n "$MOTD" ]]; then
     sed -i "/motd\s*=/ c motd=$MOTD" /data/server.properties
