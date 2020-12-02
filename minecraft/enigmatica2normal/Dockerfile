@@ -13,7 +13,9 @@ RUN mkdir /tmp/feed-the-beast && cd /tmp/feed-the-beast && \
  chown -R minecraft /tmp/feed-the-beast
 
 COPY start.sh /start.sh
+COPY rcon-cli /rcon-cli
 RUN chmod +x /start.sh
+RUN chmod +x /rcon-cli
 
 USER minecraft
 
