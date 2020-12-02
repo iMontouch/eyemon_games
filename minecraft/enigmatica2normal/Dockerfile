@@ -6,19 +6,19 @@ RUN apt-get install -y wget unzip
 RUN addgroup --gid 1234 minecraft
 RUN adduser --disabled-password --home=/data --uid 1234 --gid 1234 --gecos "minecraft user" minecraft
 
-RUN mkdir /tmp/feed-the-beast && cd /tmp/feed-the-beast && \
+VOLUME /data
+WORKDIR /data
+
+RUN mkdir /data && cd /data && \
  wget -c https://misc.imontou.ch/Enigmatica2Server-1.77.zip -O enigmatica_server.zip && \
  unzip enigmatica_server.zip && \
  rm enigmatica_server.zip && \
- chown -R minecraft /tmp/feed-the-beast
+ chown -R minecraft /data
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
 USER minecraft
-
-VOLUME /data
-WORKDIR /data
 
 EXPOSE 25565
 
