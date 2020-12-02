@@ -3,7 +3,7 @@ services:
     enigmatica2normal:
         container_name: enigmatica2normal
         volumes:
-            - '/opt/minecraft/e2n/world:/data/world'
+            - '/opt/minecraft/e2n:/data'
         restart: unless-stopped
         ports:
             - '25570:25565'
