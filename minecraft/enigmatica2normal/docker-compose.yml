@@ -10,5 +10,6 @@ services:
             - '8120:8123'
         image: enigmatica2normal:1.0
         labels:
-           traefik.frontend.rule: "Host:e2n.eyemon.de,"
+           traefik.frontend.rule: "Host:e2n-map.eyemon.de,"
            traefik.enable: true
+           traefik.port: 8120
