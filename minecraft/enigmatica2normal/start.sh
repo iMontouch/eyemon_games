@@ -13,8 +13,8 @@ else
 	sed -i 's/enable-rcon=false/enable-rcon=true/g' /data/server.properties
 	echo "rcon.port=25575" >> /data/server.properties
 	echo "rcon.password=1337" >> /data/server.properties
-	wget https://media.forgecdn.net/files/3106/504/Dynmap-3.1-beta5-forge-1.12.2.jar -o /data/mods/Dynmap-3.1-beta5-forge-1.12.2.jar
-	wget https://dl.dropboxusercontent.com/s/3fuqise4uee9rt7/spark-forge.jar -o /data/mods/spark-forge.jar
+	#wget https://media.forgecdn.net/files/3106/504/Dynmap-3.1-beta5-forge-1.12.2.jar -o /data/mods/Dynmap-3.1-beta5-forge-1.12.2.jar
+	#wget https://dl.dropboxusercontent.com/s/3fuqise4uee9rt7/spark-forge.jar -o /data/mods/spark-forge.jar
 fi
 
 if [[ -n "$MOTD" ]]; then
