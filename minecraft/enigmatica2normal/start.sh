@@ -17,10 +17,6 @@ else
 	#wget https://dl.dropboxusercontent.com/s/3fuqise4uee9rt7/spark-forge.jar -o /data/mods/spark-forge.jar
 fi
 
-if [[ -n "$MOTD" ]]; then
-    sed -i "/motd\s*=/ c motd=$MOTD" /data/server.properties
-fi
-
 #if [[ -n "$MOTD" ]]; then
 #	# buggy
 #    #sed -i "/motd\s*=/ c motd=$MOTD" /data/server.properties
