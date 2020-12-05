@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+    reactroles:
+        container_name: reactroles
+        environment:
+            - TOKEN=mytoken
+            - PREFIX=myprefix
+        image: puckzxz/reactroles
