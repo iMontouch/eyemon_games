@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+    enigmatica2normal:
+        container_name: enigmatica6
+        volumes:
+            - '/opt/minecraft/e6:/data'
+        restart: unless-stopped
+        ports:
+            - '25588:25565'
+            - '8119:8123'
+        image: enigmatica6:1.0
+        labels:
+           traefik.frontend.rule: "Host:e6-map.eyemon.de,"
+           traefik.enable: true
+           traefik.port: 8119
