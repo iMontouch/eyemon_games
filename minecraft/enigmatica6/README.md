@@ -1,5 +1,9 @@
 ## WORK IN PROGRESS
 none of the below is possibly true for this
+## pregen
+does it really work tho?
+
+`forge generate ~ ~ ~ 100 minecraft:overworld`
 
 # docker-minecraft-skyfactory4
     

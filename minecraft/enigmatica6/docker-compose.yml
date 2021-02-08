@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-    enigmatica2normal:
+    enigmatica6:
         container_name: enigmatica6
         volumes:
             - '/opt/minecraft/e6:/data'
