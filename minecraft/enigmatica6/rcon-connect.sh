@@ -1,0 +1,1 @@
+./rcon-cli --port 25575 --password 1337 $1

@@ -3,7 +3,8 @@ none of the below is possibly true for this
 ## pregen
 does it really work tho?
 
-`forge generate ~ ~ ~ 100 minecraft:overworld`
+`forge generate 0 0 0 100 minecraft:overworld`
+docker exec -it enigmatica6 /bin/bash /data/rcon-connect.sh "forge generate 0 0 0 10000 minecraft:overworld"
 
 # docker-minecraft-skyfactory4
     
