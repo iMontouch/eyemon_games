@@ -6,8 +6,14 @@ does it really work tho?
 `forge generate 0 0 0 100 minecraft:overworld`
 docker exec -it enigmatica6 /bin/bash /data/rcon-connect.sh "forge generate 0 0 0 10000 minecraft:overworld"
 
+## Dynmap
+### Blockscan
+https://github.com/webbukkit/DynmapBlockScan/pull/50
+
+-> https://github.com/webbukkit/DynmapBlockScan/files/5786534/DynmapBlockScan-3.0-SNAPSHOT-forge-1.16.4.jar.zip
+
 # docker-minecraft-skyfactory4
-    
+ 
 This is based on several repos. 
 - itzg/minecraft-server
 - jaysonsantos/docker-minecraft-ftb-skyfactory3

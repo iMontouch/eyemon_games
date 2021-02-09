@@ -10,6 +10,6 @@ services:
             - '8118:8123'
         image: enigmatica6:creative
         labels:
-           traefik.frontend.rule: "Host:e6-map.eyemon.de,"
+           traefik.frontend.rule: "Host:e6c-map.eyemon.de,"
            traefik.enable: true
-           traefik.port: 8119
+           traefik.port: 8118
