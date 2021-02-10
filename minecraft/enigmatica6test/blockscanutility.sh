@@ -50,8 +50,10 @@ function run_blockscan() {
 
 
 for filename in $queue_mods_dir/* ; do
-    echo "$filename"
-    echo "${filename##*/}"
+    #echo "$filename"
+    #echo "${filename##*/}"
+    modname=${filename##*/}
+    echo "Generating Dynmap Renderdata for Mod $modname"
 done
 
 
