@@ -1,9 +1,11 @@
 #! /bin/bash
-modsupport_dir="/opt/minecraft/e6t/dynmap/renderdata/modsupport/"
-destination_dir="/root/dynmapblockscan/renderdata/"
-queue_mods_dir="/opt/minecraft/e6t/mods/disabled/"
-done_mods_dir="/opt/minecraft/e6t/mods/done/"
-mods_dir="/opt/minecraft/e6t/mods/"
+server_root="/opt/minecraft/e6t"
+modsupport_dir="$server_root/dynmap/renderdata/modsupport/"
+queue_mods_dir="$server_root/mods/disabled/"
+done_mods_dir="$server_root/mods/done/"
+mods_dir="$server_root/mods/"
+world_dir="$server_root/world"
+destination_dir="/root/dynmapblockscan/renderdata"
 
 #docker-compose enigmatica6test down
 
@@ -50,6 +52,7 @@ function run_blockscan() {
 
 # Making sure the server is down before anything happens
 docker-compose down
+rm -r "$world"
 
 for filename in $queue_mods_dir/*; do
   #echo "$filename"
