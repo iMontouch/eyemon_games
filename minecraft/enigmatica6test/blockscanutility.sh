@@ -25,9 +25,9 @@ function activate_mod() {
 
 function is_dynmap_blockscan_finished() {
   if [[ $(docker-compose logs enigmatica6test 2>&1 | grep "Elements generated") ]]; then
-    echo 1
+    return 1
   else
-    echo 0
+    return 0
   fi
 }
 
