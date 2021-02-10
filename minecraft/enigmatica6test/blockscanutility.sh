@@ -6,6 +6,7 @@ done_mods_dir="$server_root/mods/done"
 mods_dir="$server_root/mods"
 world_dir="$server_root/world"
 destination_dir="/root/dynmapblockscan/renderdata"
+log_file="/root/dynmapblockscan/scan.log"
 
 #docker-compose enigmatica6test down
 
@@ -25,13 +26,13 @@ function test_renderdata() {
 
 function is_dynmap_blockscan_finished() {
   if [[ $(docker-compose logs enigmatica6test 2>&1 | grep "Elements generated") ]]; then
-    echo "---> Dynmap blockscan finished!"
+    echo "---> Dynmap blockscan finished!" >> log_file
     return 1
   else
     if [[ $(docker-compose ps | grep Up) ]]; then
       return 0
     else
-      echo "-!-> Detected turned server before reaching finished state, continuing with next mod."
+      echo "-!-> Detected turned server before reaching finished state, continuing with next mod." >> log_file
       return 1
     fi
   fi
@@ -42,7 +43,7 @@ function run_blockscan() {
   docker-compose down
   docker-compose up -d
 
-  echo "---> waiting for dynmap blockscan to finish..."
+  echo "---> waiting for dynmap blockscan to finish..." >> log_file
   while is_dynmap_blockscan_finished != 1; do
     sleep 5
   done
@@ -60,7 +61,7 @@ for filename in $queue_mods_dir/*; do
   #echo "$filename"
   #echo "${filename##*/}"
   modname=${filename##*/}
-  echo "-> Generating Dynmap Renderdata for Mod $modname"
+  echo "-> Generating Dynmap Renderdata for Mod $modname" >> log_file
   mv $queue_mods_dir/"$modname" $mods_dir
   run_blockscan
   copy_renderdata "$modname"
