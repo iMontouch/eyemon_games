@@ -31,25 +31,27 @@ function is_dynmap_blockscan_finished() {
   fi
 }
 
-docker-compose down
-docker-compose up -d
+function run_blockscan() {
+  # Stop and Rerun Server
+  docker-compose down
+  docker-compose up -d
 
-while is_dynmap_blockscan_finished != 1
-do
   echo "waiting for dynmap blockscan to finish..."
-  sleep 5
-done
+  while is_dynmap_blockscan_finished != 1
+  do
+    sleep 5
+  done
 
-echo "dynmap blockscan finished!"
+  # Stop Server as finished state is reached
+  echo "dynmap blockscan finished!"
+  sleep 2
+  docker-compose down
+}
 
-if is_dynmap_blockscan_finished; then
-  echo "yes"
-else
-  echo "no"
-fi
 
-for filename in $queue_mods_dir ; do
+for filename in $queue_mods_dir/* ; do
     echo "$filename"
+    echo "${filename##*/}"
 done
 
 
