@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+    enigmatica6test:
+        container_name: enigmatica6test
+        volumes:
+            - '/opt/minecraft/e6t:/data'
+        restart: unless-stopped
+        ports:
+            - '25586:25565'
+            - '8117:8123'
+        image: enigmatica6:creative
+        labels:
+           traefik.frontend.rule: "Host:e6t-map.eyemon.de,"
+           traefik.enable: true
+           traefik.port: 8117
