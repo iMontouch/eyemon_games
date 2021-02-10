@@ -7,8 +7,9 @@ mods_dir="/opt/minecraft/e6t/mods/"
 
 #docker-compose enigmatica6test down
 
-
 function copy_renderdata() {
+  mkdir -p $destination_dir/"$1"
+  cp $modsupport_dir* $destination_dir/$1
   mv $modsupport_dir* $destination_dir
 }
 
@@ -20,7 +21,7 @@ function test_renderdata() {
 }
 
 function activate_mod() {
-  mv $1 $mods_dir
+  mv "$1" $mods_dir
 }
 
 function is_dynmap_blockscan_finished() {
@@ -36,27 +37,29 @@ function run_blockscan() {
   docker-compose down
   docker-compose up -d
 
-  echo "waiting for dynmap blockscan to finish..."
-  while is_dynmap_blockscan_finished != 1
-  do
+  echo "-> waiting for dynmap blockscan to finish..."
+  while is_dynmap_blockscan_finished != 1; do
     sleep 5
   done
 
   # Stop Server as finished state is reached
-  echo "dynmap blockscan finished!"
+  echo "-> Dynmap blockscan finished!"
   sleep 2
   docker-compose down
 }
 
+# Making sure the server is down before anything happens
+docker-compose down
 
-for filename in $queue_mods_dir/* ; do
-    #echo "$filename"
-    #echo "${filename##*/}"
-    modname=${filename##*/}
-    echo "Generating Dynmap Renderdata for Mod $modname"
+for filename in $queue_mods_dir/*; do
+  #echo "$filename"
+  #echo "${filename##*/}"
+  modname=${filename##*/}
+  echo "Generating Dynmap Renderdata for Mod $modname"
+  mv $queue_mods_dir/"$modname" $mods_dir
+  run_blockscan
+  copy_renderdata "$1"
+  mv $mods_dir/"$modname" $done_mods_dir
 done
-
-
-
 
 #copy_renderdata
