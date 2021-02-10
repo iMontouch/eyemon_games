@@ -4,7 +4,6 @@ services:
         container_name: enigmatica6test
         volumes:
             - '/opt/minecraft/e6t:/data'
-        restart: false
         ports:
             - '25586:25565'
             - '8117:8123'
