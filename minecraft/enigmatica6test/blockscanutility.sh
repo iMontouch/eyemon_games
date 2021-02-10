@@ -1,9 +1,9 @@
 #! /bin/bash
 server_root="/opt/minecraft/e6t"
-modsupport_dir="$server_root/dynmap/renderdata/modsupport/"
-queue_mods_dir="$server_root/mods/disabled/"
-done_mods_dir="$server_root/mods/done/"
-mods_dir="$server_root/mods/"
+modsupport_dir="$server_root/dynmap/renderdata/modsupport"
+queue_mods_dir="$server_root/mods/disabled"
+done_mods_dir="$server_root/mods/done"
+mods_dir="$server_root/mods"
 world_dir="$server_root/world"
 destination_dir="/root/dynmapblockscan/renderdata"
 
@@ -11,8 +11,8 @@ destination_dir="/root/dynmapblockscan/renderdata"
 
 function copy_renderdata() {
   mkdir -p $destination_dir/"$1"
-  cp $modsupport_dir* $destination_dir/$1
-  mv $modsupport_dir* $destination_dir
+  cp $modsupport_dir/* $destination_dir/$1
+  mv $modsupport_dir/* $destination_dir
 }
 
 # testing
@@ -20,10 +20,6 @@ function test_renderdata() {
   docker exec -it enigmatica6test /bin/bash /data/rcon-connect.sh "dynmap purgeworld world"
   sleep 5
   docker exec -it enigmatica6test /bin/bash /data/rcon-connect.sh "dynmap fullrender world"
-}
-
-function activate_mod() {
-  mv "$1" $mods_dir
 }
 
 function is_dynmap_blockscan_finished() {
