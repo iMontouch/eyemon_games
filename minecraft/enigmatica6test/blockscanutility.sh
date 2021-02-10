@@ -26,7 +26,12 @@ function is_dynmap_blockscan_finished() {
   if [[ $(docker-compose logs enigmatica6test 2>&1 | grep "Elements generated") ]]; then
     return 1
   else
-    return 0
+    if [[ $(docker-compose ps | grep Up) ]]; then
+      return 0
+    else
+      echo "Detected turned server before reaching finished state, continuing with next mod."
+      return 1
+    fi
   fi
 }
 
@@ -57,7 +62,7 @@ for filename in $queue_mods_dir/*; do
   echo "Generating Dynmap Renderdata for Mod $modname"
   mv $queue_mods_dir/"$modname" $mods_dir
   run_blockscan
-  copy_renderdata "$1"
+  copy_renderdata "$modname"
   mv $mods_dir/"$modname" $done_mods_dir
 done
 
