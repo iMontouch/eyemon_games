@@ -11,8 +11,9 @@ destination_dir="/root/dynmapblockscan/renderdata"
 
 function copy_renderdata() {
   mkdir -p $destination_dir/"$1"
+  mkdir -p $destination_dir/enigmatica6
   cp $modsupport_dir/* $destination_dir/$1
-  mv $modsupport_dir/* $destination_dir
+  mv $modsupport_dir/* $destination_dir/enigmatica6
 }
 
 # testing
