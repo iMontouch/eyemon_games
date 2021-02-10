@@ -58,6 +58,7 @@ docker-compose down
 rm -r "$world"
 
 for filename in $queue_mods_dir/*; do
+  rm -r "$world"
   #echo "$filename"
   #echo "${filename##*/}"
   modname=${filename##*/}
