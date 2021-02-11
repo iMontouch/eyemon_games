@@ -60,11 +60,13 @@ function run_blockscan() {
 }
 
 function prepare_blockscan() {
-  rm -r "$world"
+  if [[ $(ls -A $world_dir) ]]; then
+    rm -r "$world_dir"
+  fi
   modname=$1
   mv $queue_mods_dir/"$modname" $mods_dir
   run_blockscan
-	if crashed; then
+	if $crashed; then
 	  mv $mods_dir/"$modname" $crashed_mods_dir
 	  echo "-> Server Crashed while creating for $modname. Dependency Issue?" 2>&1 | tee $log_file
 	else
@@ -88,9 +90,11 @@ function run_single_mod() {
 function run_all_disabled_mods() {
   echo "-> Generating Dynmap Renderdata for all Mods in disabled Mods Dir" 2>&1 | tee $log_file
 	rm -r "$world_dir"
-	mv $queue_mods_dir/* $mods_dir
+	if [[ $(ls -A $queue_mods_dir) ]]; then
+	  mv $queue_mods_dir/* $mods_dir
+  fi
 	run_blockscan
-	if crashed; then
+	if $crashed; then
 	  find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $crashed_mods_dir \;
 	  echo "-> Server Crashed while creating for bunch of mods." 2>&1 | tee $log_file
 	else
@@ -106,7 +110,9 @@ function run_all_disabled_mods() {
 
 # Making sure the server is down before anything happens
 docker-compose down
-rm -r "$world_dir"
+if [[ $(ls -A $world_dir) ]]; then
+  rm -r "$world_dir"
+fi
 
 
 if [ $# -eq 1 ] && [ $1 = "all" ]; then
