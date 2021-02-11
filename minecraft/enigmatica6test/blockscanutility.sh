@@ -99,7 +99,7 @@ function run_all_disabled_mods() {
   fi
 	run_blockscan
 	if [ $crashed ]; then
-	  find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $crashed_mods_dir \;
+	  # find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $crashed_mods_dir \;
 	  echo "-> Server Crashed while creating for bunch of mods." 2>&1 | tee $log_file
 	else
 	  find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $done_mods_dir \;
