@@ -28,6 +28,7 @@ function test_renderdata() {
 }
 
 function is_dynmap_blockscan_finished() {
+  # shellcheck disable=SC2143
   if [[ $(docker-compose logs enigmatica6test 2>&1 | grep "Elements generated") ]]; then
     echo "---> Dynmap blockscan finished!" 2>&1 | tee $log_file
     crashed=0
@@ -37,7 +38,8 @@ function is_dynmap_blockscan_finished() {
       return 0
     else
       echo "-!-> Detected turned server before reaching finished state, continuing with next mod." 2>&1 | tee $log_file
-      echo $(docker-compose logs enigmatica6test 2>&1 | grep "not installed") 2>&1 | tee $log_file
+      # shellcheck disable=SC2005
+      echo "$(docker-compose logs enigmatica6test 2>&1 | grep "Failure message: Mod")" 2>&1 | tee $log_file
       crashed=1
       return 1
     fi
@@ -60,7 +62,7 @@ function run_blockscan() {
 }
 
 function prepare_blockscan() {
-  if [[ $(ls -A $world_dir) ]]; then
+  if [[ -d "$world_dir" ]]; then
     rm -r "$world_dir"
   fi
   modname=$1
@@ -89,7 +91,7 @@ function run_single_mod() {
 
 function run_all_disabled_mods() {
   echo "-> Generating Dynmap Renderdata for all Mods in disabled Mods Dir" 2>&1 | tee $log_file
-	if [[ $(ls -A $world_dir) ]]; then
+	if [[ -d "$world_dir" ]]; then
     rm -r "$world_dir"
   fi
 	if [[ $(ls -A $queue_mods_dir) ]]; then
@@ -112,7 +114,7 @@ function run_all_disabled_mods() {
 
 # Making sure the server is down before anything happens
 docker-compose down
-if [[ $(ls -A $world_dir) ]]; then
+if [[ -d "$world_dir" ]]; then
   rm -r "$world_dir"
 fi
 
