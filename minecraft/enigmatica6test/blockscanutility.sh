@@ -98,13 +98,14 @@ function run_all_disabled_mods() {
 	  mv $queue_mods_dir/* $mods_dir
   fi
 	run_blockscan
-	echo "crashed var: $crashed"
 	if [ $crashed = 1 ]; then
 	  # find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $crashed_mods_dir \;
 	  echo "-> Server Crashed while creating for bunch of mods." 2>&1 | tee $log_file
 	else
+	  echo "-> Moving mods to done." 2>&1 | tee $log_file
 	  find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $done_mods_dir \;
 	  if [[ $(ls -A $modsupport_dir) ]]; then
+	    echo "-> Moving renderdata." 2>&1 | tee $log_file
 	    cp $modsupport_dir/* $destination_dir/enigmatica6
 	  else
 	    echo "-> Seems like no output was generated for this mods." 2>&1 | tee $log_file
