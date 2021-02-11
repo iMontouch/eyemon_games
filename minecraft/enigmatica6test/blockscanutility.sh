@@ -79,8 +79,11 @@ function run_single_mod() {
 }
 
 function run_all_disabled_mods() {
-    echo "-> Generating Dynmap Renderdata for all Mods in disabled Mods Dir" >>$log_file
-	prepare_blockscan "*"
+  echo "-> Generating Dynmap Renderdata for all Mods in disabled Mods Dir" >>$log_file
+	rm -r "$world"
+	mv $queue_mods_dir/* $mods_dir
+	run_blockscan
+  cp $modsupport_dir/* $destination_dir/enigmatica6
 }
 
 
