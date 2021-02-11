@@ -61,22 +61,36 @@ function run_blockscan() {
   docker-compose down
 }
 
+function prepare_blockscan() {
+  rm -r "$world"
+  modname=$1
+  mv $queue_mods_dir/"$modname" $mods_dir
+  run_blockscan
+  copy_renderdata "$modname"
+  mv $mods_dir/"$modname" $done_mods_dir
+}
+
+function run_single_mod() {
+  for filename in $queue_mods_dir/*; do
+    modname=${filename##*/}
+    echo "-> Generating Dynmap Renderdata for Mod $modname" >>$log_file
+	prepare_blockscan "$modname"
+  done
+}
+
+function run_all_disabled_mods() {
+    echo "-> Generating Dynmap Renderdata for all Mods in disabled Mods Dir" >>$log_file
+	prepare_blockscan "*"
+}
+
+
 # Making sure the server is down before anything happens
 docker-compose down
 rm -r "$world"
 
-for filename in $queue_mods_dir/*; do
-  rm -r "$world"
-  #echo "$filename"
-  #echo "${filename##*/}"
-  modname=${filename##*/}
-  echo "-> Generating Dynmap Renderdata for Mod $modname" >>$log_file
-  mv $queue_mods_dir/"$modname" $mods_dir
-  run_blockscan
-  if rendered_data; then
-    copy_renderdata "$modname"
-  fi
-  mv $mods_dir/"$modname" $done_mods_dir
-done
 
-#copy_renderdata
+if [ $# -eq 1 ] && [ $1 = "all" ]; then
+  run_all_disabled_mods
+else
+  run_single_mod
+fi
