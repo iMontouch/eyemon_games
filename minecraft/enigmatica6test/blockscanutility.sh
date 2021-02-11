@@ -68,7 +68,7 @@ function prepare_blockscan() {
   modname=$1
   mv $queue_mods_dir/"$modname" $mods_dir
   run_blockscan
-	if [ $crashed ]; then
+	if [ $crashed = 1 ]; then
 	  mv $mods_dir/"$modname" $crashed_mods_dir
 	  echo "-> Server Crashed while creating for $modname. Dependency Issue?" 2>&1 | tee $log_file
 	else
@@ -98,7 +98,8 @@ function run_all_disabled_mods() {
 	  mv $queue_mods_dir/* $mods_dir
   fi
 	run_blockscan
-	if [ $crashed ]; then
+	echo "crashed var: $crashed"
+	if [ $crashed = 1 ]; then
 	  # find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $crashed_mods_dir \;
 	  echo "-> Server Crashed while creating for bunch of mods." 2>&1 | tee $log_file
 	else
