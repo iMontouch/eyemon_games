@@ -44,14 +44,6 @@ function is_dynmap_blockscan_finished() {
   fi
 }
 
-function rendered_data() {
-  if [[ $(ls -A $modsupport_dir) ]]; then
-    echo 1
-  else
-    echo 0
-  fi
-}
-
 function run_blockscan() {
   # Stop and Rerun Server
   docker-compose down
@@ -74,9 +66,14 @@ function prepare_blockscan() {
   run_blockscan
 	if crashed; then
 	  mv $mods_dir/"$modname" $crashed_mods_dir
+	  echo "-> Server Crashed while creating for $modname. Dependency Issue?" 2>&1 | tee $log_file
 	else
 	  mv $mods_dir/"$modname" $done_mods_dir
-    copy_renderdata "$modname"
+	  if [[ $(ls -A $modsupport_dir) ]]; then
+      copy_renderdata "$modname"
+    else
+	    echo "-> Seems like no output was generated for this $modname." 2>&1 | tee $log_file
+	  fi
 	fi
 }
 
@@ -95,9 +92,14 @@ function run_all_disabled_mods() {
 	run_blockscan
 	if crashed; then
 	  find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $crashed_mods_dir \;
+	  echo "-> Server Crashed while creating for bunch of mods." 2>&1 | tee $log_file
 	else
 	  find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $done_mods_dir \;
-	  cp $modsupport_dir/* $destination_dir/enigmatica6
+	  if [[ $(ls -A $modsupport_dir) ]]; then
+	    cp $modsupport_dir/* $destination_dir/enigmatica6
+	  else
+	    echo "-> Seems like no output was generated for this mods." 2>&1 | tee $log_file
+	  fi
 	fi
 }
 
