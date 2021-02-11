@@ -33,6 +33,7 @@ function is_dynmap_blockscan_finished() {
       return 0
     else
       echo "-!-> Detected turned server before reaching finished state, continuing with next mod." >>$log_file
+      echo $(docker-compose logs enigmatica6test 2>&1 | grep "not installed")
       return 1
     fi
   fi
