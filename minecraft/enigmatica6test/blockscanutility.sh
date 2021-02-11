@@ -84,6 +84,7 @@ function run_all_disabled_mods() {
 	rm -r "$world"
 	mv $queue_mods_dir/* $mods_dir
 	run_blockscan
+	find . -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $done_mods_dir \;
   cp $modsupport_dir/* $destination_dir/enigmatica6
 }
 
