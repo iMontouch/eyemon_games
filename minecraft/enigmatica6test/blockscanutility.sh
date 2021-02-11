@@ -3,10 +3,13 @@ server_root="/opt/minecraft/e6t"
 modsupport_dir="$server_root/dynmap/renderdata/modsupport"
 queue_mods_dir="$server_root/mods/disabled"
 done_mods_dir="$server_root/mods/done"
+crashed_mods_dir="$server_root/mods/crashed"
 mods_dir="$server_root/mods"
 world_dir="$server_root/world"
 destination_dir="/root/dynmapblockscan/renderdata"
 log_file="/root/dynmapblockscan/scan.log"
+
+crashed=0
 
 #docker-compose enigmatica6test down
 
@@ -26,14 +29,16 @@ function test_renderdata() {
 
 function is_dynmap_blockscan_finished() {
   if [[ $(docker-compose logs enigmatica6test 2>&1 | grep "Elements generated") ]]; then
-    echo "---> Dynmap blockscan finished!" >>$log_file
+    echo "---> Dynmap blockscan finished!" 2>&1 | tee $log_file
+    crashed=0
     return 1
   else
     if [[ $(docker-compose ps | grep Up) ]]; then
       return 0
     else
-      echo "-!-> Detected turned server before reaching finished state, continuing with next mod." >>$log_file
-      echo $(docker-compose logs enigmatica6test 2>&1 | grep "not installed")
+      echo "-!-> Detected turned server before reaching finished state, continuing with next mod." 2>&1 | tee $log_file
+      echo $(docker-compose logs enigmatica6test 2>&1 | grep "not installed") 2>&1 | tee $log_file
+      crashed=1
       return 1
     fi
   fi
@@ -52,14 +57,14 @@ function run_blockscan() {
   docker-compose down
   docker-compose up -d
 
-  echo "---> waiting for dynmap blockscan to finish..." >>$log_file
+  echo "---> waiting for dynmap blockscan to finish..." 2>&1 | tee $log_file
   while is_dynmap_blockscan_finished != 1; do
     sleep 5
   done
 
   # Stop Server as finished state is reached
   sleep 2
-  docker-compose down
+  docker-compose stop
 }
 
 function prepare_blockscan() {
@@ -67,31 +72,39 @@ function prepare_blockscan() {
   modname=$1
   mv $queue_mods_dir/"$modname" $mods_dir
   run_blockscan
-  copy_renderdata "$modname"
-  mv $mods_dir/"$modname" $done_mods_dir
+	if crashed; then
+	  mv $mods_dir/"$modname" $crashed_mods_dir
+	else
+	  mv $mods_dir/"$modname" $done_mods_dir
+    copy_renderdata "$modname"
+	fi
 }
 
 function run_single_mod() {
   for filename in $queue_mods_dir/*; do
     modname=${filename##*/}
-    echo "-> Generating Dynmap Renderdata for Mod $modname" >>$log_file
+    echo "-> Generating Dynmap Renderdata for Mod $modname" 2>&1 | tee $log_file
 	prepare_blockscan "$modname"
   done
 }
 
 function run_all_disabled_mods() {
-  echo "-> Generating Dynmap Renderdata for all Mods in disabled Mods Dir" >>$log_file
-	rm -r "$world"
+  echo "-> Generating Dynmap Renderdata for all Mods in disabled Mods Dir" 2>&1 | tee $log_file
+	rm -r "$world_dir"
 	mv $queue_mods_dir/* $mods_dir
 	run_blockscan
-	find . -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $done_mods_dir \;
-  cp $modsupport_dir/* $destination_dir/enigmatica6
+	if crashed; then
+	  find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $crashed_mods_dir \;
+	else
+	  find $mods_dir -maxdepth 1 -type f -not -name "Dyn*" -name "*.jar" -exec mv {} $done_mods_dir \;
+	  cp $modsupport_dir/* $destination_dir/enigmatica6
+	fi
 }
 
 
 # Making sure the server is down before anything happens
 docker-compose down
-rm -r "$world"
+rm -r "$world_dir"
 
 
 if [ $# -eq 1 ] && [ $1 = "all" ]; then
