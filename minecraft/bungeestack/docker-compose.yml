@@ -14,6 +14,8 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/hub/data:/data
     restart: always
+    networks:
+      - bungeestack
   creative:
     image: itzg/minecraft-server
     environment:
@@ -28,6 +30,8 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/creative/data:/data
     restart: always
+    networks:
+      - bungeestack
   vanilla:
     image: itzg/minecraft-server
     environment:
@@ -42,6 +46,8 @@ services:
     restart: always
     ports:
       - 8123:8123
+    networks:
+      - bungeestack
   whitelisted:
     image: itzg/minecraft-server
     environment:
@@ -54,6 +60,8 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/whitelisted/data:/data
     restart: always
+    networks:
+      - bungeestack
     #
   factions:
     image: itzg/minecraft-server
@@ -67,6 +75,8 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/factions/data:/data
     restart: always
+    networks:
+      - bungeestack
   bungeecord:
     image: itzg/bungeecord
     environment:
@@ -77,14 +87,19 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/bungeecord/server:/server
     restart: always
-  dbbungee:
+    networks:
+      - bungeestack
+  db:
     image: mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: changeme
-
+    networks:
+      - bungeestack
   adminer:
     image: adminer
     restart: always
     ports:
       - 8081:8080
+    networks:
+      - bungeestack
