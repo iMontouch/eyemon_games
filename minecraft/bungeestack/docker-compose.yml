@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   hub:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:latest
     environment:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
@@ -17,7 +17,7 @@ services:
     networks:
       - bungeestack
   creative:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:latest
     environment:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
@@ -33,7 +33,7 @@ services:
     networks:
       - bungeestack
   vanilla:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:latest
     environment:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
@@ -49,7 +49,7 @@ services:
     networks:
       - bungeestack
   whitelisted:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:latest
     environment:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
@@ -64,7 +64,7 @@ services:
       - bungeestack
     #
   factions:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:latest
     environment:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
