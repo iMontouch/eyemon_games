@@ -7,7 +7,7 @@ services:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
       TYPE: "PAPER"
-      VERSION: 1.16.3
+      VERSION: latest
       MEMORY: "5G"
       LEVEL_TYPE: "FLAT"
     command: --noconsole
@@ -34,7 +34,7 @@ services:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
       TYPE: "PAPER"
-      VERSION: 1.16.3
+      VERSION: latest
       MEMORY: "4G"
     command: --noconsole
     volumes:
@@ -48,7 +48,7 @@ services:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
       TYPE: "PAPER"
-      VERSION: 1.16.3
+      VERSION: latest
       MEMORY: "2G"
     command: --noconsole
     volumes:
@@ -72,5 +72,3 @@ services:
   adminer:
     image: adminer
     restart: always
-    ports:
-      - 8090:8080
