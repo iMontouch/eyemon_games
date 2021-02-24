@@ -93,7 +93,7 @@ services:
     image: mariadb
     restart: always
     ports:
-      8336:3306
+      - 8336:3306
     environment:
       MYSQL_ROOT_PASSWORD: changeme
     networks:
