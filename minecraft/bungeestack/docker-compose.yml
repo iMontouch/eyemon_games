@@ -20,7 +20,7 @@ services:
       EULA: "TRUE"
       ONLINE_MODE: "FALSE"
       TYPE: "PAPER"
-      VERSION: 1.16.3
+      VERSION: latest
       MEMORY: "1G"
       LEVEL_TYPE: "FLAT"
       MODE: "CREATIVE"
