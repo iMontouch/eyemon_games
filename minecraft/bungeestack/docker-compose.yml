@@ -80,10 +80,9 @@ services:
   db:
     image: mariadb
     restart: always
-    ports:
-      - 8081:8080
     environment:
       MYSQL_ROOT_PASSWORD: changeme
+
   adminer:
     image: adminer
     restart: always
