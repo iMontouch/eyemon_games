@@ -77,7 +77,7 @@ services:
     volumes:
       - /opt/minecraft/bungeestack/bungeecord/server:/server
     restart: always
-  db:
+  dbbungee:
     image: mariadb
     restart: always
     environment:
