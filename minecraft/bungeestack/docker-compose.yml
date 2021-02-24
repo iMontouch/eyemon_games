@@ -103,3 +103,6 @@ services:
       - 8081:8080
     networks:
       - bungeestack
+
+networks:
+  bungeestack:
