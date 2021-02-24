@@ -42,6 +42,19 @@ services:
     restart: always
     ports:
       - 8123:8123
+  whitelisted:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"
+      TYPE: "PAPER"
+      VERSION: latest
+      MEMORY: "6G"
+    command: -- nosonsole
+    volumes:
+      - /opt/minecraft/bungeestack/whitelisted/data:/data
+    restart: always
+    #
   factions:
     image: itzg/minecraft-server
     environment:
@@ -67,6 +80,8 @@ services:
   db:
     image: mariadb
     restart: always
+    ports:
+      - 8080:8080
     environment:
       MYSQL_ROOT_PASSWORD: changeme
   adminer:
