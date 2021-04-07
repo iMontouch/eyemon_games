@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+    factorio:
+        ports:
+            - '34197:34197/udp'
+            - '27015:27015/tcp'
+        volumes:
+            - '/opt/factorio/server_lan:/factorio'
+        container_name: factorio_lan
+        restart: unless-stopped
+        image: factorioserver:1.1.5
